@@ -10,7 +10,8 @@ public class LoserPlayer {
         String[] participant = {"mislav", "stanko", "mislav", "ana"};
         String[] completion = {"stanko", "ana", "mislav"};
 
-        loserPlayer.solution(participant, completion);
+        System.out.println(loserPlayer.solution(participant, completion));
+
     }
 
     public String solution(String[] participant, String[] completion) {
@@ -24,6 +25,7 @@ public class LoserPlayer {
                 return participant[i];
             }
         }
-        return participant[i];
+        answer = participant[i];
+        return answer;
     }
 }
