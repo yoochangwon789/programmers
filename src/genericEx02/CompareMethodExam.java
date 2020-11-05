@@ -8,8 +8,8 @@ public class CompareMethodExam {
 
         boolean result = Util.compare(p1, p2);
 
-        if(result) {
-            System.out.println("논리적으로 동등한 객체입니다.");
+        if(result == true) {
+            System.out.println("논리적으로 동등한 객체 입니다.");
         } else {
             System.out.println("논리적으로 동등하지 않은 객체입니다.");
         }
@@ -19,7 +19,7 @@ public class CompareMethodExam {
 
         boolean result2 = Util.compare(p3, p4);
 
-        if(result2) {
+        if(result2 == true) {
             System.out.println("논리적으로 동등한 객체 입니다.");
         } else {
             System.out.println("논리적으로 동등하지 않은 객체입니다.");
