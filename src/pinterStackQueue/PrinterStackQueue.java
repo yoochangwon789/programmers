@@ -13,13 +13,12 @@ public class PrinterStackQueue {
         prioritiesList.add(3);
         prioritiesList.add(2);
 
-        for(int i = 0; i< prioritiesList.size(); i++) {
-            for(int j = 1; j < prioritiesList.size(); j++) {
-
-                if(prioritiesList.get(i) < prioritiesList.get(j)) {
-                }
+        for(int i = 0; i < prioritiesList.size(); i++) {
+            if(prioritiesList.get(0) < prioritiesList.get(i + 1)) {
+                prioritiesList.remove(prioritiesList.get(0));
             }
         }
+
         System.out.println(answerList);
     }
 }
