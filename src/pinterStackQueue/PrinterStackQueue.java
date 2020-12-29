@@ -5,23 +5,24 @@ import java.util.ArrayList;
 public class PrinterStackQueue {
     public static void main(String[] args) {
 
-        ArrayList<Integer> prioritiesList = new ArrayList<>();
+        int[] priorities = {1,1,9,1,1,1};
+        PrinterStackQueue printerStackQueue = new PrinterStackQueue();
 
-        prioritiesList.add(2);
-        prioritiesList.add(1);
-        prioritiesList.add(3);
-        prioritiesList.add(2);
+        System.out.println(printerStackQueue.solution(priorities, 0));
+    }
 
-        for(int i = 0; i < prioritiesList.size(); i++) {
-            for(int j = 1; j < prioritiesList.size(); j++) {
+    public int solution(int[] priorities, int location) {
+        int answer = 0;
+        int cnt = 0;
 
-                if(prioritiesList.get(0) < prioritiesList.get(j)) {
-                    prioritiesList.add(prioritiesList.get(0));
-                    prioritiesList.remove(0);
-                }
-            }
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        for (int i = 0; i < priorities.length; i++) arrayList.add(priorities[i]);
+
+        while (!arrayList.isEmpty()) {
+
         }
 
-        System.out.println(prioritiesList.size());
+        return answer;
     }
 }
