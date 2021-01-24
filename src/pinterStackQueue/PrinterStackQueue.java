@@ -1,38 +1,53 @@
 package pinterStackQueue;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class PrinterStackQueue {
     public static void main(String[] args) {
 
-        int[] priorities = {1, 1, 9, 1, 1, 1};
-        PrinterStackQueue printerStackQueue = new PrinterStackQueue();
+        int[] priorities = {7,1,3,2,4,8};
+        int location = 5;
 
-        System.out.println(printerStackQueue.solution(priorities, 2));
+        System.out.println(solution(priorities, location));
     }
 
-    public int solution(int[] priorities, int location) {
+    public static int solution(int[] priorities, int location) {
         int answer = 0;
-        int cnt = 0;
 
-        ArrayList<Integer> arrayList1 = new ArrayList<>();
-        ArrayList<Integer> locList = new ArrayList<>();
+        List<Integer> integerList1 = new ArrayList<>();
+        List<Integer> integerList2 = new ArrayList<>();
 
         for (int i = 0; i < priorities.length; i++) {
-            arrayList1.add(priorities[i]);
-            locList.add(i);
+            integerList1.add(priorities[i]);
+            integerList2.add(i);
         }
 
+        int count = 0;
+
         while (true) {
-            int i = arrayList1.get(0);
+            int P = integerList1.get(0);
+            int I = integerList2.get(0);
 
-            arrayList1.remove(i);
+            integerList1.remove(0);
+            integerList2.remove(0);
 
-            if (arrayList1.get(location) > i) {
-                arrayList1.add(i);
-            } else {
-                answer += cnt + 1;
+            if (integerList1.size() == 0) {
+                answer += count + 1;
                 break;
+            }
+
+            if (Collections.max(integerList1) > P) {
+                integerList1.add(P);
+                integerList2.add(I);
+            } else {
+                count += 1;
+
+                if (location == I) {
+                    answer = count;
+                    break;
+                }
             }
         }
 
