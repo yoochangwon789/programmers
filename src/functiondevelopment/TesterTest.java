@@ -1,26 +1,25 @@
 package functiondevelopment;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class TesterTest {
     public static void main(String[] args) {
 
-        int j = 10;
-        int[] answer = {1,1,20,1};
-        int count = 1;
+        Stack<Integer> stack = new Stack<>();
 
-        ArrayList<Integer> arrayList = new ArrayList<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
 
-        for (int i = 0; i < answer.length; i++) {
-            if (j >= answer[i]) {
-                count++;
-            }
-            if (j < answer[i]) {
-                arrayList.add(count);
-                break;
-            }
-            count = 1;
+        List<Integer> integersTest = new ArrayList<>();
+
+        while (!stack.isEmpty()) {
+            int a = stack.pop();
+            System.out.println(stack);
+            integersTest.add(a);
         }
-        System.out.println(arrayList);
+        System.out.println(integersTest);
     }
 }

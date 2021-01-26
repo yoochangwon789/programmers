@@ -2,63 +2,50 @@ package functiondevelopment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class FunctionDevelopment {
     public static void main(String[] args) {
 
+        int[] progresses = {93, 30, 55};
+        int[] speeds = {1, 30, 5};
+
+        int[] a = new int[solution(progresses, speeds).length];
+
+        for (int i = 0; i < a.length; i++) {
+            a[i] = solution(progresses, speeds)[i];
+            System.out.println(a[i]);
+        }
     }
 
-    public List<Integer> solution(int[] progresses, int[] speeds) {
-        List<Integer> answerList1 = new ArrayList<>();
-        List<Integer> integerList1 = new ArrayList<>();
+    public static int[] solution(int[] progresses, int[] speeds) {
+        int[] answer = {};
 
-        int cnt = 0;
+        Stack<Integer> integerStack = new Stack<>();
 
-        for (int i = 0; i < progresses.length; i++) {
+        for (int i = progresses.length - 1; i >= 0; i--)
+            integerStack.add((100 - progresses[i]) / speeds[i] + ((100 - progresses[i]) % speeds[i] > 0 ? 1 : 0));
 
-            while (true) {
-                progresses[i] += speeds[i];
+        List<Integer> integerList = new ArrayList<>();
+
+        while (!integerStack.isEmpty()) {
+            int cnt = 1;
+            int top = integerStack.pop();
+
+            while (!integerStack.isEmpty() && integerStack.peek() <= top) {
                 cnt++;
-
-                if (progresses[i] >= 100) {
-                    integerList1.add(cnt);
-                    break;
-                }
+                integerStack.pop();
             }
-            cnt = 0;
+
+            integerList.add(cnt);
         }
 
-        int top = 1;
+        answer = new int[integerList.size()];
 
-        while (true) {
-            int j = integerList1.get(0);
-
-            integerList1.remove(0);
-
-            if (integerList1.size() == 0) {
-                break;
-            }
-
-            if (j >= integerList1.get(0)) {
-                top++;
-
-                if (integerList1.size() == 1) {
-                    answerList1.add(top);
-                }
-            }
-
-            if (j < integerList1.get(0)) {
-                answerList1.add(top);
-                top = 1;
-
-                if (integerList1.size() == 1) {
-                    top = 1;
-                    answerList1.add(top);
-                }
-            }
-
+        for (int i = 0 ; i < answer.length; i++) {
+            answer[i] = integerList.get(i);
         }
 
-        return answerList1;
+        return answer;
     }
 }
