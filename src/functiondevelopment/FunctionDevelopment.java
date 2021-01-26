@@ -3,13 +3,13 @@ package functiondevelopment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FunctionDevelopmentTest {
+public class FunctionDevelopment {
     public static void main(String[] args) {
 
-        int[] progresses = {93, 30, 55};
-        int[] speeds = {1, 30, 5};
+    }
 
-        List<Integer> answerList = new ArrayList<>();
+    public List<Integer> solution(int[] progresses, int[] speeds) {
+        List<Integer> answerList1 = new ArrayList<>();
         List<Integer> integerList1 = new ArrayList<>();
 
         int cnt = 0;
@@ -43,21 +43,22 @@ public class FunctionDevelopmentTest {
                 top++;
 
                 if (integerList1.size() == 1) {
-                    answerList.add(top);
+                    answerList1.add(top);
                 }
             }
 
             if (j < integerList1.get(0)) {
-                answerList.add(top);
+                answerList1.add(top);
                 top = 1;
 
                 if (integerList1.size() == 1) {
                     top = 1;
-                    answerList.add(top);
+                    answerList1.add(top);
                 }
             }
 
         }
-        System.out.println(answerList);
+
+        return answerList1;
     }
 }
